@@ -460,8 +460,6 @@ def main(optmaizer_learning_rate, predict_learning_rate, optmaizerEPOCHS, predic
         test_step(feature_dense_y_list, y_test)
         for j in range(len(submodels)):
             submodels[j].warmup_sim_W.assign_add(1)
-        print(
-            f'Epoch {epoch + 1}, train_loss: {train_loss.result()}, train_acc: {train_accuracy.result()}, val_loss: {val_loss.result()}, val_acc: {val_accuracy.result()}, test_acc: {test_accuracy.result()}')
 
     predict_submodels = []
     lap_mul_input_list, processed_adj_list = [None] * len(simWs), [None] * len(simWs)
@@ -542,11 +540,8 @@ def main(optmaizer_learning_rate, predict_learning_rate, optmaizerEPOCHS, predic
         if test_accuracy_max < test_accuracy.result():
             test_accuracy_max = test_accuracy.result()
             opt_epoch = epoch
-        print(
-            f'Epoch {epoch + 1}, train_loss: {train_loss.result()}, train_acc: {train_accuracy.result()}, val_loss: {val_loss.result()}, val_acc: {val_accuracy.result()}, test_acc: {test_accuracy.result()}')
     CA = test_accuracy.result()
-    print(CA * 100, opt_epoch, test_accuracy_max * 100)
-
+    print(f'Acc={CA * 100}')
 
 def Config():
     DataName = 'wine'

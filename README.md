@@ -1,4 +1,7 @@
 # CGNN
 Repository of the code of CGNN.
 
-Further details are being organized.
+# Environment
+We use the following command to export our experimental environment for reference.
+conda env export > conda_env.yml
+pip list --format=freeze > pip_requirements.txt
